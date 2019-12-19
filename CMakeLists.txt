@@ -52,6 +52,21 @@ add_library(fribidi STATIC
   lib/fribidi-bidi-types.h
   lib/fribidi-bidi.c
   lib/fribidi-bidi.h
+  lib/fribidi-char-sets-cap-rtl.c
+  lib/fribidi-char-sets-cap-rtl.h
+  lib/fribidi-char-sets-cp1255.c
+  lib/fribidi-char-sets-cp1255.h
+  lib/fribidi-char-sets-cp1256.c
+  lib/fribidi-char-sets-cp1256.h
+  lib/fribidi-char-sets-iso8859-6.c
+  lib/fribidi-char-sets-iso8859-6.h
+  lib/fribidi-char-sets-iso8859-8.c
+  lib/fribidi-char-sets-iso8859-8.h
+  lib/fribidi-char-sets-list.h
+  lib/fribidi-char-sets-utf8.c
+  lib/fribidi-char-sets-utf8.h
+  lib/fribidi-char-sets.c
+  lib/fribidi-char-sets.h
   lib/fribidi-common.h
   lib/fribidi-config.h
   lib/fribidi-deprecated.c
@@ -86,11 +101,13 @@ target_include_directories(fribidi
 )
 target_compile_definitions(fribidi
   PRIVATE
-  _CRT_SECURE_NO_WARNINGS
-  _CRT_NONSTDC_NO_DEPRECATE
-  HAVE_STRINGIZE
-  FRIBIDI_BUILT_WITH_MSVC
-  FRIBIDI_STATIC
+    _CRT_SECURE_NO_WARNINGS
+    _CRT_NONSTDC_NO_DEPRECATE
+    HAVE_STRINGIZE
+    FRIBIDI_BUILT_WITH_MSVC
+    FRIBIDI_STATIC
+  PUBLIC
+    FRIBIDI_STATIC
 )
 target_compile_options(fribidi
   PRIVATE
@@ -141,26 +158,36 @@ install(TARGETS fribidi EXPORT fribidi
 
 
 install(FILES
-  ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi.h
   ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-arabic.h
   ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-begindecls.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-bidi.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-bidi-types.h
   ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-bidi-types-list.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-bidi-types.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-bidi.h
   ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-brackets.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-char-sets-cap-rtl.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-char-sets-cp1255.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-char-sets-cp1256.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-char-sets-iso8859-6.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-char-sets-iso8859-8.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-char-sets-list.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-char-sets-utf8.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-char-sets.h
   ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-common.h
   ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-config.h
   ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-deprecated.h
   ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-enddecls.h
   ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-flags.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-joining.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-joining-types.h
   ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-joining-types-list.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-joining-types.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-joining.h
   ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-mirroring.h
   ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-shape.h
   ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-types.h
-  ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-unicode.h
   ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-unicode-version.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-unicode.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/lib/joining-types.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/lib/run.h
   DESTINATION include/fribidi)
 
 install(EXPORT fribidi
