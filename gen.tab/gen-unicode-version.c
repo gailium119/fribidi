@@ -32,23 +32,11 @@
 # include <config.h>
 #endif
 
-#ifdef STDC_HEADERS
-# include <stdlib.h>
-# include <stddef.h>
-#else
-# if HAVE_STDLIB_H
-#  include <stdlib.h>
-# endif
-#endif
-#ifdef HAVE_STRING_H
-# if !STDC_HEADERS && HAVE_MEMORY_H
-#  include <memory.h>
-# endif
-# include <string.h>
-#endif
-#ifdef HAVE_STRINGS_H
-# include <strings.h>
-#endif
+#include <stdlib.h>
+#include <stddef.h>
+#include <stdlib.h>
+#include <memory.h>
+#include <string.h>
 
 #include "packtab.h"
 

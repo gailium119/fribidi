@@ -108,11 +108,9 @@
 # define FRIBIDI_EMPTY_STMT FRIBIDI_BEGIN_STMT (void) 0; FRIBIDI_END_STMT
 #endif /* !FRIBIDI_EMPTY_STMT */
 
-#ifdef HAVE_STRINGIZE
+#ifndef STRINGIZE
 # define STRINGIZE(symbol) #symbol
-#else /* !HAVE_STRINGIZE */
-#  error "No stringize operator available?"
-#endif /* !HAVE_STRINGIZE */
+#endif
 
 /* As per recommendation of GNU Coding Standards. */
 #ifndef _GNU_SOURCE

@@ -1,0 +1,8 @@
+build*/
+.vscode/
+fribidi-unicode-version.h
+joining-type.tab.i
+mirroring.tab.i
+fribidi-config.h
+arabic-shaping.tab.i
+bidi-type.tab.i
