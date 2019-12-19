@@ -147,6 +147,7 @@ install(FILES
   ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-bidi.h
   ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-bidi-types.h
   ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-bidi-types-list.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-brackets.h
   ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-common.h
   ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-config.h
   ${CMAKE_CURRENT_SOURCE_DIR}/lib/fribidi-deprecated.h
