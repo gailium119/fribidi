@@ -50,14 +50,10 @@
 /* fribidi_malloc and fribidi_free should be used instead of malloc and free. 
  * No need to include any headers. */
 #ifndef fribidi_malloc
-# if HAVE_STDLIB_H
 #  ifndef __FRIBIDI_DOC
 #   include <stdlib.h>
 #  endif /* __FRIBIDI_DOC */
 #  define fribidi_malloc malloc
-# else /* !HAVE_STDLIB_H */
-#  define fribidi_malloc (void *) malloc
-# endif	/* !HAVE_STDLIB_H */
 # define fribidi_free free
 #else /* fribidi_malloc */
 # ifndef fribidi_free
@@ -65,15 +61,8 @@
 # endif	/* !fribidi_free */
 #endif /* fribidi_malloc */
 
-#ifdef HAVE_STRING_H
-# if !STDC_HEADERS && HAVE_MEMORY_H
-#  include <memory.h>
-# endif
-# include <string.h>
-#endif
-#ifdef HAVE_STRINGS_H
-# include <strings.h>
-#endif
+#include <memory.h>
+#include <string.h>
 
 /* FRIBIDI_BEGIN_STMT should be used at the beginning of your macro
  * definitions that are to behave like simple statements.  Use
