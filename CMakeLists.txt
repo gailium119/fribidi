@@ -37,6 +37,8 @@ add_custom_target(generators
     ${CMAKE_CURRENT_SOURCE_DIR}/lib/joining-type.tab.i
     ${CMAKE_CURRENT_SOURCE_DIR}/lib/arabic-shaping.tab.i
     ${CMAKE_CURRENT_SOURCE_DIR}/lib/mirroring.tab.i
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/brackets.tab.i
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/brackets-type.tab.i
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
@@ -52,6 +54,8 @@ add_library(fribidi STATIC
   lib/fribidi-bidi-types.h
   lib/fribidi-bidi.c
   lib/fribidi-bidi.h
+  lib/fribidi-brackets.c
+  lib/fribidi-brackets.h
   lib/fribidi-char-sets-cap-rtl.c
   lib/fribidi-char-sets-cap-rtl.h
   lib/fribidi-char-sets-cp1255.c
@@ -91,6 +95,8 @@ add_library(fribidi STATIC
   lib/joining-types.h
   lib/run.h
   )
+
+add_dependencies(fribidi generators)
 add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 target_include_directories(fribidi
   PRIVATE
@@ -117,14 +123,6 @@ target_link_options(fribidi
   PRIVATE
     /debug:full
 )
-add_dependencies(fribidi generators)
-#   gen-unicode
-#   gen-mirroring
-#   gen-arabic-shaping
-#   gen-joining-type
-#   # gen-derived-bidi-type
-#   gen-bidi-type
-#   )
 
 include(CMakePackageConfigHelpers)
 write_basic_package_version_file(

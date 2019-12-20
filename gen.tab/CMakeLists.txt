@@ -116,3 +116,48 @@ add_custom_target(gen-mirroring ALL
   ${ROOT}/gen.tab/unidata/BidiMirroring.txt >
   ${ROOT}/lib/mirroring.tab.i
   BYPRODUCTS ${ROOT}/lib/mirroring.tab.i)
+
+add_executable(gen-brackets-tab
+  ${ROOT}/gen.tab/packtab.h
+  ${ROOT}/gen.tab/packtab.c
+  ${ROOT}/gen.tab/gen-brackets-tab.c)
+target_include_directories(gen-brackets-tab PUBLIC
+  $<BUILD_INTERFACE:${ROOT}/lib>
+)
+target_compile_definitions(gen-brackets-tab
+  PRIVATE
+  _CRT_SECURE_NO_WARNINGS
+  _CRT_NONSTDC_NO_DEPRECATE
+)
+add_dependencies(gen-brackets-tab gen-unicode)
+
+add_custom_target(gen-brackets ALL
+  COMMAND gen-brackets-tab
+  ${COMPRESSION}
+	${ROOT}/gen.tab/unidata/BidiBrackets.txt
+	${ROOT}/gen.tab/unidata/UnicodeData.txt
+  ${ROOT}/lib/fribidi-unicode-version.h >
+  ${ROOT}/lib/brackets.tab.i
+  BYPRODUCTS ${ROOT}/lib/brackets.tab.i)
+
+add_executable(gen-brackets-type-tab
+  ${ROOT}/gen.tab/packtab.h
+  ${ROOT}/gen.tab/packtab.c
+  ${ROOT}/gen.tab/gen-brackets-type-tab.c)
+target_include_directories(gen-brackets-type-tab PUBLIC
+  $<BUILD_INTERFACE:${ROOT}/lib>
+)
+target_compile_definitions(gen-brackets-type-tab
+  PRIVATE
+  _CRT_SECURE_NO_WARNINGS
+  _CRT_NONSTDC_NO_DEPRECATE
+)
+add_dependencies(gen-brackets-type-tab gen-unicode)
+
+add_custom_target(gen-brackets-type ALL
+  COMMAND gen-brackets-type-tab
+  ${COMPRESSION}
+	${ROOT}/gen.tab/unidata/BidiBrackets.txt
+  ${ROOT}/lib/fribidi-unicode-version.h >
+  ${ROOT}/lib/brackets-type.tab.i
+  BYPRODUCTS ${ROOT}/lib/brackets-type.tab.i)
