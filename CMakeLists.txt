@@ -27,6 +27,9 @@ set(VS_VERSION "Visual Studio 15")
 if (MSVC_TOOLSET_VERSION EQUAL 142)
   set(VS_VERSION "Visual Studio 16")
 endif()
+if (MSVC_TOOLSET_VERSION EQUAL 143)
+  set(VS_VERSION "Visual Studio 17")
+endif()
 add_custom_target(generators
   COMMAND cmake -G ${VS_VERSION} -A x64 -Thost=x64 -S ${CMAKE_CURRENT_SOURCE_DIR}/gen.tab -B ${CMAKE_CURRENT_BINARY_DIR}/generators
   COMMAND cmake --build ${CMAKE_CURRENT_BINARY_DIR}/generators --config RelWithDebInfo
